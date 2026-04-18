@@ -44,8 +44,6 @@
 
         <projectService serviceImplementation="com.itangcent.easyapi.cache.VcsBranchChangeListener"/>
 
-        <postStartupActivity implementation="com.itangcent.easyapi.ide.ApiIndexStartupActivity"/>
-
         <projectConfigurable groupId="null"
                              displayName="EasyApi"
                              id="easyapi.settings.EasyApiConfigurable"
@@ -62,26 +60,11 @@
                              displayName="Other"
                              id="easyapi.settings.EasyApiConfigurable.Other"
                              instance="com.itangcent.easyapi.settings.ui.EasyApiOtherConfigurable"/>
-        <toolWindow
-                id="API Dashboard"
-                secondary="true"
-                icon="AllIcons.Toolwindows.ToolWindowRun"
-                anchor="bottom"
-                factoryClass="com.itangcent.easyapi.dashboard.ApiDashboardToolWindowFactory"/>
         <notificationGroup id="EasyApi Notifications" displayType="BALLOON"/>
-        <codeInsight.lineMarkerProvider language="JAVA" implementationClass="com.itangcent.easyapi.ide.linemarker.ApiMethodLineMarkerProvider"/>
-        <searchEverywhereContributor implementation="com.itangcent.easyapi.ide.search.ApiSearchEverywhereContributorFactory"/>
     </extensions>
 
     <actions>
         <group id="EasyApiExportFromFileGroup" text="Export" description="Export apis">
-            <action id="com.itangcent.idea.easy_api.actions.ApiCallAction"
-                    class="com.itangcent.easyapi.ide.action.ApiCallAction" text="Call"
-                    description="Call">
-                <keyboard-shortcut first-keystroke="alt shift C" keymap="$default"/>
-                <keyboard-shortcut first-keystroke="control C" keymap="Mac OS X" replace-all="true"/>
-                <keyboard-shortcut first-keystroke="control C" keymap="Mac OS X 10.5+" replace-all="true"/>
-            </action>
             <action id="com.itangcent.idea.easy_api.actions.MultipleExportAction"
                     class="com.itangcent.easyapi.ide.action.ExportApiAction" text="Export"
                     description="Export">
@@ -121,14 +104,6 @@
             </action>
         </group>
 
-        <group id="EasyApiCodeMenu" text="EasyApi" description="EasyApiCodeMenu" popup="true">
-            <add-to-group group-id="CodeMenu" anchor="last"/>
-            <action id="com.itangcent.idea.easy_api.actions.ScriptExecutorAction"
-                    class="com.itangcent.easyapi.ide.action.OpenScriptExecutorAction" text="ScriptExecutor"
-                    description="ScriptExecutor">
-            </action>
-        </group>
-
         <group id="EasyApiGenerateMenu" text="EasyApi" description="EasyApiGenerateMenu" popup="true">
             <add-to-group group-id="GenerateGroup" anchor="last"/>
             <reference ref="EasyApiExportFromFileGroup"/>
@@ -148,14 +123,6 @@
             <reference ref="EasyApiExportFromFileGroup"/>
             <reference ref="EasyApiExportGroup"/>
         </group>
-
-        <action
-                id="com.itangcent.idea.easy_api.actions.OpenDashboardAction"
-                class="com.itangcent.easyapi.ide.action.OpenApiDashboardAction"
-                text="Open API Dashboard"
-                description="Open API Dashboard tool window">
-            <add-to-group group-id="ToolsMenu" anchor="last"/>
-        </action>
 
     </actions>
 </idea-plugin>
